@@ -1,0 +1,86 @@
+.display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-brand-background-primary);
+
+  padding: 0.25rem 10%;
+}
+
+.logolink {
+  text-decoration: none;
+  font-size: 0;
+}
+
+.logo_container {
+  width: 50px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.logo_title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  color: var(--color-brand-primary);
+  font-size: 2rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.options {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  position: relative;
+  width: fit-content;
+  color: var(--color-brand-primary);
+  font-weight: 600;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-brand-primary);
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: 0.2s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.header_option {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-brand-primary);
+  background-color: inherit;
+  cursor: pointer;
+  position: relative;
+}
+
+.header_option::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-brand-primary);
+  height: 2px;
+  width: 0;
+  left: 0;
+  bottom: -5px;
+  transition: 0.2s;
+}
+
+.header_option:hover::after {
+  width: 100%;
+}
