@@ -18,6 +18,9 @@ export default function HomePage() {
   const [book, setBook] = useState();
   const [date, setDate] = useState(new Date());
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState();
+
   const router = useRouter();
 
   const {
@@ -32,17 +35,18 @@ export default function HomePage() {
     const token = Cookies.get("token");
     if (token)
       axios
-        .get("http://localhost:8080/api/v1/user/books", {
+        .get(`http://localhost:8080/api/v1/user/books?page=${currentPage}&size=10`, {
           headers: {
             Authorization: "Bearer " + Cookies.get("token"),
           },
         })
         .then((res) => {
           console.log(res.data);
-          setBooks(res.data);
+          setBooks(res.data.content);
+          setTotalPages(res.data.totalPages);
         })
         .catch((err) => console.log(err));
-  }, []);
+  }, [currentPage]);
 
   const addBook = () => {
     const data = {
@@ -60,6 +64,14 @@ export default function HomePage() {
         router.reload();
       })
       .catch((err) => console.log(err));
+  };
+
+  const prevPage = () => {
+    if (currentPage > 0) setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages - 1) setCurrentPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -88,6 +100,15 @@ export default function HomePage() {
             books.map((book) => (
               <BookCard key={book.id} title={book.title} date={book.date === null ? "xx/xx/xxxx" : moment(book.date).format("DD/MM/YYYY")} />
             ))}
+        </div>
+        <div className={styles.pagination_controls}>
+          <button className={styles.button} onClick={prevPage} disabled={currentPage === 0}>
+            Prev
+          </button>
+          {currentPage + 1} - {totalPages}
+          <button className={styles.button} onClick={nextPage} disabled={currentPage === totalPages - 1}>
+            Next
+          </button>
         </div>
       </section>
     </main>

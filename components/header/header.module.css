@@ -84,3 +84,50 @@
 .header_option:hover::after {
   width: 100%;
 }
+
+.mobile_options {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 780px) {
+  .display {
+    padding: 0.25rem 7%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .display {
+    padding: 0.25rem 2%;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: normal;
+    gap: 2rem;
+    font-weight: 600;
+    position: absolute;
+    top: 54px;
+    right: 0;
+    width: 150px;
+    z-index: 1;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+
+    background-color: var(--color-brand-background-primary);
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+  }
+
+  .options.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile_options {
+    display: block;
+  }
+}

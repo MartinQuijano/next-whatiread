@@ -21,7 +21,6 @@ export default function Login() {
   });
 
   const login = () => {
-    console.log("Logueando!");
     const data = { username: username, password: password };
     axios
       .post("http://localhost:8080/auth/login", data)

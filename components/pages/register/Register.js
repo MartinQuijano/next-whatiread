@@ -31,7 +31,6 @@ export default function Register() {
   });
 
   const register = () => {
-    console.log("Registrando!");
     const data = { username: username, password: password };
 
     axios
