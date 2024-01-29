@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import moment from "moment/moment";
 import styles from "./homepage.module.css";
+import { usePagination } from "@/hooks/usePagination";
 
 export default function HomePage() {
   const [books, setBooks] = useState([]);
@@ -18,9 +19,7 @@ export default function HomePage() {
   const [book, setBook] = useState();
   const [date, setDate] = useState(new Date());
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const [totalPages, setTotalPages] = useState();
-
+  const { currentPage, totalPages, prevPage, nextPage, changeTotalPages } = usePagination();
   const router = useRouter();
 
   const {
@@ -35,7 +34,7 @@ export default function HomePage() {
     const token = Cookies.get("token");
     if (token)
       axios
-        .get(`http://localhost:8080/api/v1/user/books?page=${currentPage}&size=10`, {
+        .get(`http://localhost:8080/api/v1/user/books?page=${currentPage}&size=2`, {
           headers: {
             Authorization: "Bearer " + Cookies.get("token"),
           },
@@ -43,9 +42,10 @@ export default function HomePage() {
         .then((res) => {
           console.log(res.data);
           setBooks(res.data.content);
-          setTotalPages(res.data.totalPages);
+          changeTotalPages(res.data.totalPages);
         })
         .catch((err) => console.log(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
   const addBook = () => {
@@ -64,14 +64,6 @@ export default function HomePage() {
         router.reload();
       })
       .catch((err) => console.log(err));
-  };
-
-  const prevPage = () => {
-    if (currentPage > 0) setCurrentPage((prevPage) => prevPage - 1);
-  };
-
-  const nextPage = () => {
-    if (currentPage < totalPages - 1) setCurrentPage((prevPage) => prevPage + 1);
   };
 
   return (
@@ -105,7 +97,7 @@ export default function HomePage() {
           <button className={styles.button} onClick={prevPage} disabled={currentPage === 0}>
             Prev
           </button>
-          {currentPage + 1} - {totalPages}
+          {books.length > 0 && currentPage + 1} - {totalPages > 0 && totalPages}
           <button className={styles.button} onClick={nextPage} disabled={currentPage === totalPages - 1}>
             Next
           </button>
