@@ -12,6 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import moment from "moment/moment";
 import styles from "./homepage.module.css";
 import { usePagination } from "@/hooks/usePagination";
+import { add } from "@/services/book";
 
 export default function HomePage() {
   const [books, setBooks] = useState([]);
@@ -48,22 +49,10 @@ export default function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
 
-  const addBook = () => {
-    const data = {
-      title: book,
-      date: date,
-    };
-    axios
-      .post("http://localhost:8080/api/v1/books", data, {
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        router.reload();
-      })
-      .catch((err) => console.log(err));
+  const addNewBook = () => {
+    add(book, date).then(() => {
+      router.reload();
+    });
   };
 
   return (
@@ -80,7 +69,7 @@ export default function HomePage() {
             autoFocus
           />
           <DatePicker className={styles.date_picker} name="title" selected={date} onChange={(date) => setDate(date)} />
-          <button className={styles.button} type="submit" onClick={handleSubmitBook(addBook)}>
+          <button className={styles.button} type="submit" onClick={handleSubmitBook(addNewBook)}>
             Add
           </button>
         </form>

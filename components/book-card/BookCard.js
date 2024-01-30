@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
-import Cookies from "js-cookie";
 import { FaRegTrashAlt } from "react-icons/fa";
 import styles from "./bookcard.module.css";
+import { remove } from "@/services/book";
 
 export default function BookCard({ title, date }) {
   const [hovered, setHovered] = useState(false);
@@ -13,23 +12,9 @@ export default function BookCard({ title, date }) {
   };
 
   const removeBook = () => {
-    const book = {
-      title: title,
-    };
-
-    axios
-      .delete("http://localhost:8080/api/v1/books", {
-        data: book,
-        headers: {
-          Authorization: "Bearer " + Cookies.get("token"),
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        router.reload();
-      })
-      .catch((err) => console.log(err));
+    remove(title).then(() => {
+      router.reload();
+    });
   };
 
   return (
