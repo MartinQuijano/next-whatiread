@@ -41,14 +41,6 @@
   cursor: pointer;
 }
 
-.button {
-  padding: 0.5rem;
-  background-color: var(--color-brand-primary);
-  font-weight: 600;
-  border-radius: 0.2rem;
-  cursor: pointer;
-}
-
 .pagination_controls {
   display: flex;
   align-items: center;

@@ -43,3 +43,15 @@ body {
   color: black;
   position: relative;
 }
+
+.button {
+  padding: 0.5rem;
+  background-color: var(--color-brand-primary);
+  font-weight: 600;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.test {
+  display: none;
+}

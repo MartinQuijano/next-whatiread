@@ -13,6 +13,7 @@ import moment from "moment/moment";
 import styles from "./homepage.module.css";
 import { usePagination } from "@/hooks/usePagination";
 import { add } from "@/services/book";
+import Pagination from "@/components/pagination/pagination";
 
 export default function HomePage() {
   const [books, setBooks] = useState([]);
@@ -69,7 +70,7 @@ export default function HomePage() {
             autoFocus
           />
           <DatePicker className={styles.date_picker} name="title" selected={date} onChange={(date) => setDate(date)} />
-          <button className={styles.button} type="submit" onClick={handleSubmitBook(addNewBook)}>
+          <button className={"button"} type="submit" onClick={handleSubmitBook(addNewBook)}>
             Add
           </button>
         </form>
@@ -82,15 +83,7 @@ export default function HomePage() {
               <BookCard key={book.id} title={book.title} date={book.date === null ? "xx/xx/xxxx" : moment(book.date).format("DD/MM/YYYY")} />
             ))}
         </div>
-        <div className={styles.pagination_controls}>
-          <button className={styles.button} onClick={prevPage} disabled={currentPage === 0}>
-            Prev
-          </button>
-          {books.length > 0 && currentPage + 1} - {totalPages > 0 && totalPages}
-          <button className={styles.button} onClick={nextPage} disabled={currentPage === totalPages - 1}>
-            Next
-          </button>
-        </div>
+        <Pagination currentPage={currentPage} totalPages={totalPages} prevPage={prevPage} nextPage={nextPage} />
       </section>
     </main>
   );
