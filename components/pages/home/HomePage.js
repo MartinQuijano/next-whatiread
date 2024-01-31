@@ -66,12 +66,14 @@ export default function HomePage() {
     <main className={styles.main}>
       {!token ? (
         <section className={styles.hero}>
-          <div className={styles.information}>
-            <h1 className={styles.title}>TRACK YOUR READS, MARK YOUR MOMENTS</h1>
-            <h3 className={styles.subtitle}>Centralize your reading journey: all your book records in one place</h3>
-          </div>
-          <div className={styles.logo_container}>
-            <Image className={styles.image} src="/whatiread_hero.png" alt="main_logo" width={0} height={0} sizes="100vw" />
+          <div className={styles.content}>
+            <div className={styles.information}>
+              <h1 className={styles.title}>TRACK YOUR READS, MARK YOUR MOMENTS</h1>
+              <h3 className={styles.subtitle}>Centralize your reading journey: all your book records in one place</h3>
+            </div>
+            <div className={styles.logo_container}>
+              <Image className={styles.image} src="/whatiread_hero.png" alt="main_logo" width={0} height={0} sizes="100vw" />
+            </div>
           </div>
         </section>
       ) : (

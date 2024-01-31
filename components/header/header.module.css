@@ -99,7 +99,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .display {
     padding: 0.25rem 2%;
   }
