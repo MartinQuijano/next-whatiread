@@ -11,9 +11,9 @@
 }
 
 :root {
-  --color-brand-primary: #fb7b00;
-  --color-brand-background-primary: #393b44;
-  --color-brand-background-secondary: #6d6f78;
+  --color-brand-primary: #fc8f17;
+  --color-brand-background-primary: #1d1e20;
+  --color-brand-background-secondary: #111111;
   --color-brand-background-tertiary: #a3a4a8;
 
   --color-notification-error: rgb(255, 50, 50);
