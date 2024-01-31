@@ -2,9 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-brand-background-primary);
 
-  padding: 0.25rem 10%;
+  padding: 0.25rem 2.5%;
+  margin: 0 2rem;
 }
 
 .logolink {
@@ -31,12 +31,13 @@
   color: var(--color-brand-primary);
   font-size: 2rem;
   font-weight: 600;
+  text-shadow: 0 0 2px black;
   user-select: none;
 }
 
 .options {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .link {
@@ -44,6 +45,8 @@
   width: fit-content;
   color: var(--color-brand-primary);
   font-weight: 600;
+  font-size: 1.125rem;
+  text-shadow: 0 0 2px black;
 }
 
 .link::after {
