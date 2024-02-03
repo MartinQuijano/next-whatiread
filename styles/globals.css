@@ -14,7 +14,7 @@
   --color-brand-primary: #fc8f17;
   --color-brand-background-primary: #1d1e20;
   --color-brand-background-secondary: #111111;
-  --color-brand-background-tertiary: #a3a4a8;
+  --color-brand-background-tertiary: #bdbdbd;
 
   --color-notification-error: rgb(255, 50, 50);
   --color-notification-error-dark: rgb(252, 99, 99);
@@ -50,8 +50,4 @@ body {
   font-weight: 600;
   border-radius: 0.2rem;
   cursor: pointer;
-}
-
-.test {
-  display: none;
 }
