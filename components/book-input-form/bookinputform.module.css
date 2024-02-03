@@ -1,0 +1,28 @@
+.options {
+  display: flex;
+  justify-content: center;
+}
+
+.add_book_form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+
+.date_picker {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .add_book_form {
+    flex-direction: column;
+  }
+}
