@@ -3,13 +3,15 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 0.25rem 2.5%;
-  margin: 0 2rem;
+  padding: 0.25rem 5%;
 }
 
 .logolink {
   text-decoration: none;
   font-size: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .logo_container {
@@ -47,6 +49,7 @@
   font-weight: 600;
   font-size: 1.125rem;
   text-shadow: 0 0 2px black;
+  margin: 0 auto;
 }
 
 .link::after {
@@ -65,7 +68,7 @@
 }
 
 .header_option {
-  font-size: 1rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-brand-primary);
   background-color: inherit;

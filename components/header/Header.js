@@ -32,14 +32,19 @@ export default function Header() {
           <div className={styles.logo_container}>
             <Image className={styles.image} src="/icons/whatiread-icon.png" alt="main_logo" width={0} height={0} sizes="100vw" />
           </div>
+          <p className={styles.title}>What i read</p>
         </Link>
-        <p className={styles.title}>What i read</p>
       </div>
       <nav className={styles.options + " " + (mobileMenuOpen ? styles.active : "")}>
         {token ? (
-          <button className={styles.header_option} onClick={logout}>
-            Logout
-          </button>
+          <>
+            <Link className={`link ${styles.link}`} href="/library" onClick={setMobileMenuOpen}>
+              Library
+            </Link>
+            <button className={styles.header_option} onClick={logout}>
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <Link className={`link ${styles.link}`} href="/login" onClick={setMobileMenuOpen}>
