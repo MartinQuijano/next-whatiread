@@ -40,3 +40,12 @@ export const remove = async (title) => {
     })
     .catch((err) => console.log(err));
 };
+
+export const getBooks = async (currentPage) => {
+  const res = await axios.get(BASE_URL + `user/books?page=${currentPage}&size=5`, {
+    headers: {
+      Authorization: "Bearer " + Cookies.get("token"),
+    },
+  });
+  return res;
+};
