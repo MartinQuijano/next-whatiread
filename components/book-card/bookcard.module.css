@@ -1,5 +1,5 @@
 .book_card {
-  background-color: var(--color-brand-background-tertiary);
+  background-color: #f3f3f3;
   width: 300px;
   padding: 1rem;
   border-radius: 0.25rem;
@@ -8,7 +8,7 @@
 
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 3px 4px 2px 1px rgb(167, 167, 167);
 }
 
 .book_card:hover {
