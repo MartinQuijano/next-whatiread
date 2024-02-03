@@ -1,0 +1,33 @@
+.container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.books_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, max-content));
+  justify-content: center;
+  gap: 2rem;
+}
+
+.pagination_controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-weight: 600;
+}
+
+.error {
+  color: var(--color-notification-error-dark);
+  font-weight: 600;
+  text-align: center;
+}
