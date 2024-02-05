@@ -7,25 +7,40 @@ import Cookies from "js-cookie";
 import moment from "moment";
 import { getBooks } from "@/services/book";
 import BookInputForm from "@/components/book-input-form/BookInputForm";
+import Filters from "@/components/filters/Filters";
 
 export default function Library() {
   const [books, setBooks] = useState([]);
+  const [sort, setSort] = useState();
+  const [order, setOrder] = useState("asc");
 
   const { currentPage, totalPages, prevPage, nextPage, changeTotalPages } = usePagination();
 
   useEffect(() => {
     const token = Cookies.get("token");
     if (token)
-      getBooks(currentPage).then((res) => {
+      getBooks(currentPage, sort, order).then((res) => {
         setBooks(res.data.content);
         changeTotalPages(res.data.totalPages);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [currentPage, sort, order]);
+
+  const handleSortChange = (newSort) => {
+    setSort(newSort);
+  };
+
+  const handleOrderChange = () => {
+    let newOrder;
+    if (order === "asc") newOrder = "desc";
+    else newOrder = "asc";
+    setOrder(newOrder);
+  };
 
   return (
     <section className={styles.container}>
       <BookInputForm />
+      <Filters sort={sort} handleSortChange={handleSortChange} order={order} handleOrderChange={handleOrderChange} />
       <section className={styles.books_container}>
         <div className={styles.books}>
           {books?.length > 0 &&
