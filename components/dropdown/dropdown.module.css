@@ -1,0 +1,62 @@
+.select__menu {
+  width: 200px;
+}
+
+.select__menu .select__button {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.select__button .sButton__icon {
+  font-size: 1.25rem;
+  transition: 0.3s;
+}
+
+.select__menu.active .select__button .sButton__icon {
+  transform: rotate(-180deg);
+}
+
+.select__menu .options {
+  margin-top: 0.5rem;
+  position: absolute;
+  width: 200px;
+  border-radius: 0.25rem;
+  background-color: white;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 50;
+  display: none;
+}
+
+.select__menu.active .options {
+  display: block;
+}
+
+.options .option {
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  background-color: white;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.options .option:hover {
+  background-color: #e4e4e4;
+}
+
+.option .option__text {
+  font-weight: 600;
+}
