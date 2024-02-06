@@ -41,10 +41,10 @@ export const remove = async (title) => {
     .catch((err) => console.log(err));
 };
 //&sort=book.title,desc
-export const getBooks = async (currentPage, sort, order) => {
+export const getBooks = async (currentPage, search, sort, order) => {
   let URL;
-  if (sort) URL = BASE_URL + `user/books?page=${currentPage}&size=5&sort=${sort},${order}`;
-  else URL = BASE_URL + `user/books?page=${currentPage}&size=5`;
+  if (sort) URL = BASE_URL + `user/books?keyword=${search}&page=${currentPage}&size=5&sort=${sort},${order}`;
+  else URL = BASE_URL + `user/books?keyword=${search}&page=${currentPage}&size=5`;
   const res = await axios.get(URL, {
     headers: {
       Authorization: "Bearer " + Cookies.get("token"),

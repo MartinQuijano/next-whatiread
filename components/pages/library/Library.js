@@ -13,13 +13,14 @@ export default function Library() {
   const [books, setBooks] = useState([]);
   const [sort, setSort] = useState();
   const [order, setOrder] = useState("asc");
+  const [search, setSearch] = useState("");
 
   const { currentPage, totalPages, prevPage, nextPage, changeTotalPages } = usePagination();
 
   useEffect(() => {
     const token = Cookies.get("token");
     if (token)
-      getBooks(currentPage, sort, order).then((res) => {
+      getBooks(currentPage, search, sort, order).then((res) => {
         setBooks(res.data.content);
         changeTotalPages(res.data.totalPages);
       });
@@ -37,10 +38,29 @@ export default function Library() {
     setOrder(newOrder);
   };
 
+  const handleSearchChange = (newSearch) => {
+    setSearch(newSearch);
+  };
+
+  const searchByTitle = () => {
+    getBooks(currentPage, search, sort, order).then((res) => {
+      setBooks(res.data.content);
+      changeTotalPages(res.data.totalPages);
+    });
+  };
+
   return (
     <section className={styles.container}>
       <BookInputForm />
-      <Filters sort={sort} handleSortChange={handleSortChange} order={order} handleOrderChange={handleOrderChange} />
+      <Filters
+        sort={sort}
+        handleSortChange={handleSortChange}
+        order={order}
+        handleOrderChange={handleOrderChange}
+        search={search}
+        handleSearchChange={handleSearchChange}
+        handleSearch={searchByTitle}
+      />
       <section className={styles.books_container}>
         <div className={styles.books}>
           {books?.length > 0 &&
