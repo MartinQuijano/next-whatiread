@@ -25,7 +25,7 @@ export default function Dropdown({ options, handleSelection, handleSameSelection
   return (
     <div className={styles.select__menu + " " + (open ? styles.active : "")}>
       <div className={styles.select__button} onClick={toggleDropdown}>
-        <span className={styles.sButton__text}>{selected ? "Sort by: " + selected : "Sort by"}</span>
+        {selected ? "Sort by: " + selected : "Sort by"}
         <MdKeyboardArrowDown className={styles.sButton__icon} />
       </div>
       <ul className={styles.options}>
