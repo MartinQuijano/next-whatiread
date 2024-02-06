@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { add } from "@/services/book";
 import { useRouter } from "next/router";
 import { bookSchema } from "@/models/validationSchemas/book";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookInputForm() {
   const [book, setBook] = useState();
